@@ -7,11 +7,11 @@ services:
       R_TEST: testing
     volumes:
       - ./main.R:/home/productor/main.R
-      - ./startup_script.sh:/home/productor/startup_script.sh
     ports:
       - 80:80
-    # command: ["Rscript", "/home/productor/main.R"]
-    command: ["bash", "/home/productor/startup_script.sh"]
+    command: ["Rscript", "/home/productor/main.R"]
+    # command: ["bash", "/home/productor/startup_script.sh"]
     # command: ["apt-get", "install", "systemctl", "-y"]
     # command: ["ls", "/srv/shiny-server"]
     # command: ["systemctl", "start", "shiny-server", "--verbose"]
+    # R -e "shiny::runApp('~/shinyapp')"

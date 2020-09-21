@@ -11,9 +11,10 @@ library(biggr)
 library(ndexssh)
 # py_config()
 # Sys.sleep(10000)
-
-print(.libPaths())
-
+system('sudo apt-get install git -y')
+system('git clone https://github.com/fdrennan/interface.git')
+print(fs::dir_ls())
+shiny::runApp(appDir = 'interface', port = 80)
 
 
 # print(import('paramiko'))
