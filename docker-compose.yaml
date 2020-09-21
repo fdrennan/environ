@@ -10,6 +10,7 @@ services:
       R_TEST: testing
     volumes:
       - ./main.R:/home/productor/main.R
+      - ./plumber.R:/home/productor/plumber.R
       - shiny_logs:/var/log/shiny-server
     user: 'root'
     ports:
