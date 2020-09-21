@@ -7,7 +7,7 @@ glue_system <- function(string) {
   system(string)
 }
 
-APPLICATION='PLUMBER' # 'SHINY', 'PLUMBER', 'SCRIPT'
+APPLICATION='SHINY' # 'SHINY', 'PLUMBER', 'SCRIPT'
 HOST = '0.0.0.0'
 PORT = 3000
 SWAGGER_UI = TRUE # PLUMBER ONLY
