@@ -7,9 +7,17 @@
 renv::activate()
 library(reticulate)
 library(tidymodels)
+library(biggr)
+library(ndexssh)
 # py_config()
+# Sys.sleep(10000)
 
-print(import('paramiko'))
+print(.libPaths())
+
+
+
+# print(import('paramiko'))
+# print(import('boto3'))
 # list.files()
 # library(reticulate)
 # py_config()
