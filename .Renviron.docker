@@ -1,1 +1,2 @@
-RETICULATE_PYTHON=/home/miniconda/envs/r-reticulate/bin/python3.6
+HOSTNAME=localhost
+DEFAULT_GIT_BRANCH=https://github.com/fdrennan/interface.git
