@@ -3,21 +3,21 @@ services:
   r_base:
     # image: fdrennan/environ:latest
     # image: fdrennan/environ:beta
-    image: fdrennan/environ:dev
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
+    # image: fdrennan/environ:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     environment:
       R_TEST: testing
     volumes:
       - ./main.R:/home/productor/main.R
       - ./plumber.R:/home/productor/plumber.R
-      # - shiny_logs:/var/log/shiny-server
+      - ./shiny_logs:/var/log/shiny-server
     user: 'root'
     ports:
       - "80:3000"
     command: ["Rscript", "/home/productor/main.R"]
 
-# volumes:
-#   shiny_logs:
+volumes:
+  shiny_logs:

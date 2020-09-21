@@ -1,3 +1,13 @@
+system('git clone https://github.com/fdrennan/interface.git')
+shiny::runApp(
+  appDir = '/home/productor/interface',
+  port = 3000,
+  launch.browser = FALSE,
+  host = '0.0.0.0'
+)
+
+fs::dir_ls()
+
 # renv::activate()
 # library(reticulate)
 # library(tidymodels)
@@ -17,4 +27,4 @@
 # )
 # import('paramiko')
 
-pr <- plumber::plumb('plumber.R'); pr$run(host='0.0.0.0', port=3000, swagger = TRUE)
+# pr <- plumber::plumb('plumber.R'); pr$run(host='0.0.0.0', port=3000, swagger = TRUE)
