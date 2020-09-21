@@ -7,35 +7,29 @@ glue_system <- function(string) {
   system(string)
 }
 
-DEFAULT_GIT_BRANCH <- Sys.getenv('DEFAULT_GIT_BRANCH')
+APPLICATION='SHINY' # 'SHINY', 'PLUMBER'
+HOST = '0.0.0.0'
+PORT = 3000
+SWAGGER_UI = TRUE # PLUMBER ONLY
+DEFAULT_GIT_BRANCH <- 'https://github.com/fdrennan/interface.git'
 
-glue_system('git clone {DEFAULT_GIT_BRANCH} app')
+if (APPLICATION='SHINY') {
 
-shiny::runApp(
-  appDir = 'app',
-  port = 3000,
-  launch.browser = FALSE,
-  host = '0.0.0.0'
-)
+  glue_system('git clone {DEFAULT_GIT_BRANCH} app')
+  shiny::runApp(
+    appDir = 'app',
+    port = PORT,
+    launch.browser = FALSE,
+    host = HOST
+  )
+} else if (APPLICATION='PLUMBER') {
+  pr <- plumber::plumb('plumber.R');
+  pr$run(
+    host=HOST,
+    port=PORT,
+    swagger = SWAGGER_UI
+  )
+} else {
+  print(reticulate::import('paramiko'))
+}
 
-# fs::dir_ls()
-# renv::activate()
-# library(reticulate)
-# library(tidymodels)
-# library(biggr)
-# library(ndexssh)
-# library(shiny)
-
-# system('git clone https://github.com/fdrennan/interface.git')
-# print(fs::dir_ls())
-# print(.libPaths())
-# runApp(appDir = 'interface', port = 3838)
-# shiny::runApp(
-#   appDir = 'interface',
-#   port = 3000,
-#   launch.browser = FALSE,
-#   host = '0.0.0.0'
-# )
-# import('paramiko')
-
-# pr <- plumber::plumb('plumber.R'); pr$run(host='0.0.0.0', port=3000, swagger = TRUE)
