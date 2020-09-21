@@ -41,6 +41,7 @@ install.packages(
 )
 
 renv::install('UrbanInstitute/urbnmapr')
+renv::install('fdrennan/ndexutils')
 renv::install('fdrennan/ndexssh')
 renv::install('fdrennan/biggr')
 renv::install('fdrennan/ndexpg')
