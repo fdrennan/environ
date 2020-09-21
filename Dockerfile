@@ -26,3 +26,5 @@ WORKDIR /home/productor
 COPY install.R /home/productor/install.R
 
 RUN Rscript /home/productor/install.R
+
+RUN git clone https://github.com/fdrennan/interface.git

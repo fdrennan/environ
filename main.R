@@ -5,7 +5,7 @@
 # library(ndexssh)
 # library(shiny)
 
-system('git clone https://github.com/fdrennan/interface.git')
+# system('git clone https://github.com/fdrennan/interface.git')
 # print(fs::dir_ls())
 # print(.libPaths())
 # runApp(appDir = 'interface', port = 3838)
@@ -17,4 +17,4 @@ system('git clone https://github.com/fdrennan/interface.git')
 # )
 # import('paramiko')
 
-pr <- plumber::plumb('plumber.R'); pr$run(host='0.0.0.0', port=3000)
+pr <- plumber::plumb('plumber.R'); pr$run(host='0.0.0.0', port=3000, swagger = TRUE)
