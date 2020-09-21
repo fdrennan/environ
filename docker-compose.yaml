@@ -1,12 +1,12 @@
 version: '3.4'
 services:
   r_base:
-    # image: fdrennan/environ:latest
+    image: fdrennan/environ:latest
     # image: fdrennan/environ:beta
     # image: fdrennan/environ:dev
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     restart: always
     environment:
       R_TEST: testing
