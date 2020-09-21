@@ -1,13 +1,24 @@
-system('git clone https://github.com/fdrennan/interface.git')
+library(glue)
+library(stringr)
+
+glue_system <- function(string) {
+  string <- glue(string)
+  message(string)
+  system(string)
+}
+
+DEFAULT_GIT_BRANCH <- Sys.getenv('DEFAULT_GIT_BRANCH')
+
+glue_system('git clone {DEFAULT_GIT_BRANCH} app')
+
 shiny::runApp(
-  appDir = '/home/productor/interface',
+  appDir = 'app',
   port = 3000,
   launch.browser = FALSE,
   host = '0.0.0.0'
 )
 
-fs::dir_ls()
-
+# fs::dir_ls()
 # renv::activate()
 # library(reticulate)
 # library(tidymodels)
