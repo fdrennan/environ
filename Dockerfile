@@ -19,7 +19,9 @@ RUN apt-get update --allow-releaseinfo-change -qq && apt-get install -y \
     libudunits2-dev \
     libgdal-dev \
     systemctl \
-    git
+    git \
+    libssh2-1 \
+    libssh2-1-dev
 
 WORKDIR /home/productor
 
