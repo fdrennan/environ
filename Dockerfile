@@ -17,7 +17,9 @@ RUN apt-get update --allow-releaseinfo-change -qq && apt-get install -y \
     libpq-dev \
     libsodium-dev \
     libudunits2-dev \
-    libgdal-dev
+    libgdal-dev \
+    systemctl \
+    git
 
 WORKDIR /home/productor
 
@@ -25,3 +27,4 @@ COPY install.R /home/productor/install.R
 
 RUN Rscript /home/productor/install.R
 
+RUN git clone https://github.com/fdrennan/interface.git

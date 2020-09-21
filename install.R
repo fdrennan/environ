@@ -50,5 +50,5 @@ library(reticulate)
 install_miniconda(path = PREFIX)
 Sys.setenv(RETICULATE_PYTHON=RETICULATE_PYTHON)
 system(paste0('echo RETICULATE_PYTHON=', RETICULATE_PYTHON, ' >> ~/.Renviron'))
-py_install(packages = c('paramiko', 'boto3'))
+py_install(packages = c('paramiko', 'boto3', 'scikit-learn', 'scipy', 'pandas', 'matplotlib'))
 

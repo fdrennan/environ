@@ -1,21 +1,34 @@
-# ENVIRONMENT_NAME <- 'r-reticulate'
-# PREFIX = '/home/miniconda'
-# RETICULATE_PYTHON =  paste0(
-#   PREFIX, '/envs/', ENVIRONMENT_NAME,'/bin/python3.6'
-# )
-# Sys.setenv(RETICULATE_PYTHON=RETICULATE_PYTHON)
-renv::activate()
-library(reticulate)
-library(tidymodels)
-# py_config()
+library(glue)
+library(stringr)
 
-print(import('paramiko'))
-# list.files()
-# library(reticulate)
-# py_config()
-# p <- import('paramiko')
-# print(p)
-# renv::snapshot()
-# options(renv.consent = TRUE)
-# renv::restore()
-# Sys.sleep(3000)
+glue_system <- function(string) {
+  string <- glue(string)
+  message(string)
+  system(string)
+}
+
+APPLICATION='PLUMBER' # 'SHINY', 'PLUMBER', 'SCRIPT'
+HOST = '0.0.0.0'
+PORT = 3000
+SWAGGER_UI = TRUE # PLUMBER ONLY
+
+if (APPLICATION=='SHINY') {
+  DEFAULT_GIT_BRANCH <- 'https://github.com/fdrennan/interface.git'
+  glue_system('git clone {DEFAULT_GIT_BRANCH} app')
+  shiny::runApp(
+    appDir = 'app',
+    port = PORT,
+    launch.browser = FALSE,
+    host = HOST
+  )
+} else if (APPLICATION=='PLUMBER') {
+  pr <- plumber::plumb('plumber.R');
+  pr$run(
+    host=HOST,
+    port=PORT,
+    swagger = SWAGGER_UI
+  )
+} else if (APPLICATION=='SCRIPT') {
+  print(reticulate::import('paramiko'))
+}
+

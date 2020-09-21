@@ -1,12 +1,24 @@
 version: '3.4'
 services:
   r_base:
-    image: productor
+    # image: fdrennan/environ:latest
+    # image: fdrennan/environ:beta
+    # image: fdrennan/environ:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     environment:
       R_TEST: testing
     volumes:
       - ./main.R:/home/productor/main.R
+      - ./plumber.R:/home/productor/plumber.R
+      - ./.Renviron.docker:/home/productor/.Renviron
+      - ./shiny_logs:/var/log/shiny-server
+    user: 'root'
     ports:
-      - 5439:5432
+      - "80:3000"
     command: ["Rscript", "/home/productor/main.R"]
+
+volumes:
+  shiny_logs:
