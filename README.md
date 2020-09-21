@@ -17,3 +17,4 @@ Packages:
 #### [ndexutils](https://github.com/fdrennan/ndexutils)
 #### [biggr](https://github.com/fdrennan/biggr)
 #### [ndexssh](https://github.com/fdrennan/ndexssh)
+#### [ndexrstrator](https://github.com/fdrennan/ndexrstrator)
