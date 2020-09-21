@@ -1,0 +1,5 @@
+.Renviron
+.Renv
+.Rproj.user
+.Rhistory
+*.pem
