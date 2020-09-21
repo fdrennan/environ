@@ -21,7 +21,8 @@ RUN apt-get update --allow-releaseinfo-change -qq && apt-get install -y \
     systemctl \
     git \
     libssh2-1 \
-    libssh2-1-dev
+    libssh2-1-dev \
+    texlive-full
 
 WORKDIR /home/productor
 
