@@ -55,3 +55,6 @@ Sys.setenv(RETICULATE_PYTHON=RETICULATE_PYTHON)
 system(paste0('echo RETICULATE_PYTHON=', RETICULATE_PYTHON, ' >> ~/.Renviron'))
 py_install(packages = c('paramiko', 'boto3', 'scikit-learn', 'scipy', 'pandas', 'matplotlib'))
 
+# glue::glue('biggr::configure_aws(aws_access_key_id = "{Sys.getenv("AWS_ACCESS")}",
+#                            default.region = "{Sys.getenv("AWS_REGION")}",
+#                            aws_secret_access_key = "{Sys.getenv("AWS_SECRET")}")')
