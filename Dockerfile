@@ -24,6 +24,12 @@ RUN apt-get update --allow-releaseinfo-change -qq && apt-get install -y \
     libssh2-1-dev \
     texlive-full
 
+RUN apt-get install -y unzip  \
+    curl
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
+
 WORKDIR /home/productor
 
 COPY install.R /home/productor/install.R
