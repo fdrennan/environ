@@ -1,6 +1,9 @@
 FROM r-base:4.0.2
 MAINTAINER Freddy Drennan
+WORKDIR /home/productor
+ENV PRODUCTOR_VERSION 0.1.0
 
+# INSTALL BINARIES REQUIRED TO RUN R CODE AND HANDLE MISC THINGS IN THE CONTAINER
 RUN apt-get update --allow-releaseinfo-change -qq && apt-get install -y \
     sudo \
     gdebi-core \
@@ -26,14 +29,17 @@ RUN apt-get update --allow-releaseinfo-change -qq && apt-get install -y \
     unzip \
     curl
 
+# INSTALL AWS CLI
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
 RUN ./aws/install
 
-WORKDIR /home/productor
 
-COPY install.R /home/productor/install.R
+# COPY IN REQUIRED FILES
+COPY renv.lock renv.lock
 
-RUN Rscript /home/productor/install.R
+COPY install_R_packages.R install_R_packages.R
+RUN Rscript install_R_packages.R
 
-RUN git clone https://github.com/fdrennan/interface.git
+COPY install_conda.R install_conda.R
+RUN Rscript /home/productor/install_conda.R
