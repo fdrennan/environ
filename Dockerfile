@@ -34,12 +34,11 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN unzip awscliv2.zip
 RUN ./aws/install
 
-
 # COPY IN REQUIRED FILES
 COPY renv.lock renv.lock
 
-COPY install_R_packages.R install_R_packages.R
+COPY ./scripts/install_R_packages.R install_R_packages.R
 RUN Rscript install_R_packages.R
 
-COPY install_conda.R install_conda.R
+COPY ./scripts/install_conda.R install_conda.R
 RUN Rscript /home/productor/install_conda.R

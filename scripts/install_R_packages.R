@@ -1,4 +1,5 @@
 install.packages('renv')
+library(renv)
 options(renv.consent = TRUE)
-renv::activate()
-renv::restore()
+activate()
+restore()

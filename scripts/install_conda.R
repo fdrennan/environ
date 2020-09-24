@@ -1,4 +1,3 @@
-install.packages('reticulate')
 library(reticulate)
 ENVIRONMENT_NAME <- 'r-reticulate'
 BASE_DIRECTORY = '/home/miniconda'
