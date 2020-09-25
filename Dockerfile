@@ -42,3 +42,5 @@ RUN Rscript install_R_packages.R
 
 COPY ./scripts/install_conda.R install_conda.R
 RUN Rscript /home/productor/install_conda.R
+
+COPY ./scripts/main.R main.R
