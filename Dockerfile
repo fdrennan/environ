@@ -1,5 +1,8 @@
-FROM r-base:4.0.2
+FROM r-base:4.0.3
 MAINTAINER Freddy Drennan
+
+ENV DEBIAN_FRONTEND=noninteractive
+
 
 RUN apt-get update --allow-releaseinfo-change -qq && apt-get install -y \
     sudo \
@@ -30,10 +33,15 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN unzip awscliv2.zip
 RUN ./aws/install
 
-WORKDIR /home/productor
+WORKDIR /home/root
 
-COPY install.R /home/productor/install.R
+RUN R -e "install.packages('tidyverse')"
+RUN R -e "install.packages('devtools')"
+RUN R -e "install.packages('roxygen2')"
+RUN R -e "install.packages('usethis')"
 
-RUN Rscript /home/productor/install.R
+# COPY install.R /home/productor/install.R
 
-RUN git clone https://github.com/fdrennan/interface.git
+# RUN Rscript /home/productor/install.R
+
+# RUN git clone https://github.com/fdrennan/interface.git

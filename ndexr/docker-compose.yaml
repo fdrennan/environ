@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  ndexbase:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "always"
+    volumes:
+      - ./main.R:/home/main.R
+      - ./main.sh:/home/main.sh
+    user: 'root'
+    ports:
+      - "80:3000"
+    command: ["sh", "/home/main.sh"]
